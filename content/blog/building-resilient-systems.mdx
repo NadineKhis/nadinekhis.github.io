@@ -1,0 +1,81 @@
+Building resilient distributed systems is hard. After spending years operating production systems at scale, here are the patterns that actually work.
+
+## Circuit Breakers
+
+A circuit breaker prevents cascading failures by failing fast when a dependency is unhealthy. The state machine is simple:
+
+- **Closed:** normal operation, requests pass through
+- **Open:** failures exceed threshold, requests fail immediately
+- **Half-open:** after timeout, allow a probe request to test recovery
+
+```go
+type CircuitBreaker struct {
+    failures   int
+    threshold  int
+    timeout    time.Duration
+    state      State
+    lastError  time.Time
+    mu         sync.Mutex
+}
+
+func (cb *CircuitBreaker) Call(fn func() error) error {
+    cb.mu.Lock()
+    if cb.state == Open {
+        if time.Since(cb.lastError) > cb.timeout {
+            cb.state = HalfOpen
+        } else {
+            cb.mu.Unlock()
+            return ErrCircuitOpen
+        }
+    }
+    cb.mu.Unlock()
+
+    err := fn()
+
+    cb.mu.Lock()
+    defer cb.mu.Unlock()
+
+    if err != nil {
+        cb.failures++
+        cb.lastError = time.Now()
+        if cb.failures >= cb.threshold {
+            cb.state = Open
+        }
+        return err
+    }
+
+    cb.failures = 0
+    cb.state = Closed
+    return nil
+}
+```
+
+## Bulkheads
+
+Bulkheads isolate resources so failure in one path doesn't starve others. In practice:
+
+- **Connection pools** per upstream service (not shared)
+- **Thread pools** per workload type (CPU-bound vs I/O-bound)
+- **Rate limiters** per tenant in multi-tenant systems
+
+## Graceful Degradation
+
+When a dependency fails, degrade instead of crashing:
+
+1. **Serve stale data** from cache if the primary store is down
+2. **Return partial results** — show what you have, mark what's missing
+3. **Feature flags** to disable non-critical functionality
+
+## Timeouts Everywhere
+
+Every external call needs a timeout. Not 30 seconds — start with 100ms and tune up. A request that's already slow is likely to keep getting slower.
+
+## Observability is the Foundation
+
+You can't build resilient systems without knowing what's happening:
+
+- **RED metrics:** Rate, Errors, Duration for every service
+- **Distributed tracing:** Every request gets a trace ID
+- **Structured logging:** Logs are events, not strings
+
+The best resilience pattern is the one you've tested in production before the incident happens.

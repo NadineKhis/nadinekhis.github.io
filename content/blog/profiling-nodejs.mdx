@@ -1,0 +1,97 @@
+CPU at 100%, memory climbing, and you have no idea what's happening — sound familiar? Here's how to profile Node.js in production without downtime.
+
+## CPU Profiling
+
+### Built-in Profiler
+
+Node.js has a built-in profiler that's surprisingly good:
+
+```bash
+node --prof app.js
+```
+
+This generates a `isolate-*.log` file. Process it with:
+
+```bash
+node --prof-process isolate-*.log > processed.txt
+```
+
+### Flamegraphs with async_hooks
+
+For production, use `async_hooks` with `perf_hooks` to trace async operations:
+
+```js
+const { createHook } = require('async_hooks');
+const { performance, PerformanceObserver } = require('perf_hooks');
+
+const traces = new Map();
+
+const hook = createHook({
+  init(asyncId, type, triggerAsyncId) {
+    if (type === 'PROMISE') return;
+    traces.set(asyncId, {
+      type,
+      start: performance.now(),
+      triggerAsyncId,
+      stack: new Error().stack,
+    });
+  },
+  destroy(asyncId) {
+    const trace = traces.get(asyncId);
+    if (trace) {
+      const duration = performance.now() - trace.start;
+      if (duration > 100) {
+        console.warn(`Slow async op: ${trace.type} took ${duration.toFixed(2)}ms`);
+      }
+      traces.delete(asyncId);
+    }
+  },
+});
+
+hook.enable();
+```
+
+## Memory Profiling
+
+### Heap Snapshots
+
+Take heap snapshots and compare them to find leaks:
+
+```js
+const { writeHeapSnapshot } = require('v8');
+
+setInterval(() => {
+  const snapshotPath = writeHeapSnapshot();
+  console.log(`Heap snapshot written to: ${snapshotPath}`);
+}, 60 * 60 * 1000); // Every hour
+```
+
+Compare two snapshots in Chrome DevTools to find what's growing.
+
+### GC Tracking
+
+Track garbage collection events to gauge memory pressure:
+
+```js
+const { performance, PerformanceObserver } = require('perf_hooks');
+
+const obs = new PerformanceObserver((list) => {
+  const entries = list.getEntries();
+  for (const entry of entries) {
+    const duration = entry.duration / 1e6; // ns to ms
+    if (duration > 100) {
+      console.warn(`Long GC pause: ${entry.name} took ${duration.toFixed(2)}ms`);
+    }
+  }
+});
+
+obs.observe({ entryTypes: ['gc'] });
+```
+
+## Key Takeaways
+
+- Profile locally first, then carefully in staging, then in production
+- Async hooks are powerful but have overhead — use them sparingly in production
+- Heap snapshots are your best tool for finding memory leaks
+- Long GC pauses (>100ms) indicate memory pressure
+- CPU profiling with flamegraphs reveals hot paths immediately
