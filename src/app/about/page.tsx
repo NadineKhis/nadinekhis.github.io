@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
 };
 
 const skills = [
-  { category: "Languages", items: ["TypeScript", "Go", "Python", "Rust", "SQL"] },
-  { category: "Backend", items: ["Node.js", "Express", "FastAPI", "gRPC", "GraphQL"] },
-  { category: "Infrastructure", items: ["Kubernetes", "Docker", "Terraform", "AWS", "GCP"] },
-  { category: "Data", items: ["PostgreSQL", "Redis", "Kafka", "ClickHouse", "Flink"] },
+  { category: "Languages", items: ["TypeScript", "JavaScript", "Python", "Go"] },
+  { category: "Backend", items: ["Node.js", "WebSockets", "gRPC", "RabbitMQ", "AWS Lambda"] },
+  { category: "Data & Storage", items: ["MongoDB", "DynamoDB", "Redis", "Minio"] },
+  { category: "Infrastructure", items: ["Docker", "Kubernetes", "CI/CD", "Prometheus", "Grafana"] },
+  { category: "AI & LLM", items: ["Ollama", "Claude", "Opencode", "LLM API", "Prompt Engineering"] }
 ];
 
 export default function About() {
@@ -21,14 +21,8 @@ export default function About() {
 
       <section className="mt-12 space-y-6">
         <p className="text-lg leading-8 text-stone-600 dark:text-stone-400">
-          I&apos;m a software engineer who loves building systems that scale. I&apos;ve spent
-          the last several years designing distributed systems, optimizing performance, and
-          occasionally breaking things in production so I can learn how to fix them better.
-        </p>
-        <p className="text-lg leading-8 text-stone-600 dark:text-stone-400">
-          I believe in writing code that&apos;s boring in the right ways — clear, testable,
-          and boringly reliable in production. When I&apos;m not debugging a distributed
-          trace, I&apos;m writing about what I&apos;ve learned or contributing to open source.
+          I&apos;m a backend engineer with 5 years of commercial experience, who builds real-time communication systems and
+          developer tools. 
         </p>
       </section>
 
@@ -39,28 +33,99 @@ export default function About() {
         <div className="mt-8 space-y-8">
           <div className="border-l-2 border-amber-500 pl-4">
             <h3 className="font-semibold text-stone-900 dark:text-stone-50">
-              Senior Software Engineer
+              Middle+ Software Engineer — Backend Developer
             </h3>
             <p className="text-sm text-amber-600 dark:text-amber-400">
-              Company Name &middot; 2024 &ndash; Present
+              MyOffice (New Cloud Technologies LLC) &middot; 2022 &ndash; 2026
             </p>
-            <p className="mt-2 text-stone-600 dark:text-stone-400">
-              Leading the platform engineering team. Designed a distributed caching layer
-              that reduced p99 latency by 60%. Mentoring engineers and driving architectural
-              decisions.
+            <p className="mt-2 text-sm font-medium text-stone-500 dark:text-stone-400">
+              Stack: Node.js, Nest.js, MongoDB, RabbitMQ, WebRTC, Matrix, Docker
             </p>
+            <div className="mt-4 space-y-3 text-stone-600 dark:text-stone-400">
+              <p>
+                Developed <strong className="text-stone-900 dark:text-stone-50">Squadus</strong>{" "}
+                — a Rocket.Chat-derived corporate messenger and digital workspace for the
+                Russian market, serving government and enterprise clients.
+              </p>
+              <ul className="ml-5 list-disc space-y-2">
+                <li>
+                  Built real-time messaging backend (1:1/group chats, channels, threads) on
+                  Node.js/Meteor; optimized MongoDB aggregation pipelines and replica set
+                  sharding for high-throughput message history at scale.
+                </li>
+                <li>
+                  Developed WebRTC-based video conferencing (VKS) backend  — signaling server,
+                  SFU/media relay integration, and AI transcription/summarization pipeline for
+                  meeting recordings.
+                </li>
+                <li>
+                  Architected Telegram integration via the Matrix protocol — first Russian
+                  corporate messenger with bidirectional Telegram bridging, enabling secure
+                  cross-platform communication while preserving DLP and encryption controls.
+                </li>
+                <li>
+                  Designed ICAP-based DLP integration layer for InfoWatch Traffic Monitor and
+                  SearchInform CIB, enabling real-time message/file content inspection and
+                  policy enforcement.
+                </li>
+                <li>
+                  Built scalable file/media service with chunked upload, thumbnail generation,
+                  PDF preview, and progressive image loading optimized for low-bandwidth mobile
+                  environments.
+                </li>
+                <li>
+                  Improved application performance: reduced mobile cold start by 24% (Android)
+                  / 9% (iOS), halved Squadus 1.9 launch time, and stabilized WebRTC under mass
+                  concurrent load via connection pooling and MongoDB index optimization.
+                </li>
+                <li>
+                  Maintained Rocket.Chat upstream fork — rebased 384+ upstream changes in v1.1,
+                  ported security patches, and contributed back Matrix federation components.
+                </li>
+                <li>
+                  Managed infrastructure: Docker Compose, CI/CD
+                  pipelines, MongoDB replica set failover, Prometheus/Grafana monitoring.
+                </li>
+              </ul>
+              <p>
+                Proficient with AI/LLM tools — self-host local LLMs (ollama/LM Studio) and local code assistants for daily development — code generation, debugging, test writing, refactoring; integrated LLM APIs into production VKS features for transcription and summarization.
+              </p>
+            </div>
           </div>
           <div className="border-l-2 border-stone-300 pl-4 dark:border-stone-700">
             <h3 className="font-semibold text-stone-900 dark:text-stone-50">
-              Software Engineer
+              Junior Software Engineer — Backend Developer
             </h3>
-            <p className="text-sm text-stone-500 dark:text-stone-400">
-              Company Name &middot; 2021 &ndash; 2024
+            <p className="text-sm text-amber-600 dark:text-amber-400">
+              EPAM Systems &middot; 2021 &ndash; 2022
             </p>
-            <p className="mt-2 text-stone-600 dark:text-stone-400">
-              Built and operated real-time data pipelines processing billions of events.
-              Improved system reliability to 99.99% uptime with comprehensive observability.
+            <p className="mt-2 text-sm font-medium text-stone-500 dark:text-stone-400">
+              Stack: Node.js, AWS Lambda, DynamoDB, API Gateway, GitHub
             </p>
+            <div className="mt-4 space-y-3 text-stone-600 dark:text-stone-400">
+              <ul className="ml-5 list-disc space-y-2">
+                <li>
+                  Developed Node.js microservices on AWS Lambda for an e-commerce platform
+                  serving the American Seeds Store (Syngenta).
+                </li>
+                <li>
+                  Implemented authentication/authorization flows using JWT-based token
+                  validation across services.
+                </li>
+                <li>
+                  Built error-handling middleware with structured logging, retry logic, and
+                  DynamoDB transaction error recovery.
+                </li>
+                <li>
+                  Integrated DynamoDB for product catalog, order, and user data — designed
+                  single-table schema and optimized query patterns.
+                </li>
+                <li>
+                  Contributed to CI/CD pipeline (AWS SAM / Serverless Framework) for automated
+                  deployments.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

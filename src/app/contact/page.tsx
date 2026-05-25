@@ -17,7 +17,7 @@ export default function Contact() {
 
       <div className="mt-12 space-y-6">
         <a
-          href="mailto:nadia@example.com"
+          href="mailto:nadia.khis@proton.me"
           className="group flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-5 transition-all hover:border-amber-500/50 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 dark:hover:border-amber-500/50"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
@@ -31,13 +31,13 @@ export default function Contact() {
               Email
             </div>
             <div className="text-sm text-stone-500 dark:text-stone-400">
-              nadia@example.com
+              nadia.khis@proton.me
             </div>
           </div>
         </a>
 
         <a
-          href="https://github.com/nadiahki"
+          href="https://github.com/NadineKhis"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-5 transition-all hover:border-amber-500/50 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 dark:hover:border-amber-500/50"
@@ -52,13 +52,13 @@ export default function Contact() {
               GitHub
             </div>
             <div className="text-sm text-stone-500 dark:text-stone-400">
-              @nadiahki
+              @NadineKhis
             </div>
           </div>
         </a>
 
         <a
-          href="https://linkedin.com/in/nadiahki"
+          href="https://linkedin.com/in/nadia-khismatullina-2b37b31b1"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-5 transition-all hover:border-amber-500/50 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 dark:hover:border-amber-500/50"
@@ -73,7 +73,7 @@ export default function Contact() {
               LinkedIn
             </div>
             <div className="text-sm text-stone-500 dark:text-stone-400">
-              /in/nadiahki
+              /in/nadia-khismatullina-2b37b31b1
             </div>
           </div>
         </a>
