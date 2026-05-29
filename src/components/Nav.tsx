@@ -1,19 +1,29 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/routing";
 import ThemeToggle from "./ThemeToggle";
+import LocaleSwitcher from "./LocaleSwitcher";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+const links: { href: "/" | "/about" | "/projects" | "/blog" | "/contact"; labelKey: keyof NavTranslations }[] = [
+  { href: "/", labelKey: "home" },
+  { href: "/about", labelKey: "about" },
+  { href: "/projects", labelKey: "projects" },
+  { href: "/blog", labelKey: "blog" },
+  { href: "/contact", labelKey: "contact" },
 ];
+
+type NavTranslations = {
+  home: string;
+  about: string;
+  projects: string;
+  blog: string;
+  contact: string;
+};
 
 export default function Nav() {
   const pathname = usePathname();
+  const t = useTranslations("Nav");
 
   return (
     <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/80 backdrop-blur-md dark:border-stone-800 dark:bg-stone-950/80">
@@ -35,10 +45,11 @@ export default function Nav() {
                   : "text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-50"
               }`}
             >
-              {link.label}
+              {t(link.labelKey as string)}
             </Link>
           ))}
-          <div className="ml-2 pl-2 border-l border-stone-200 dark:border-stone-800">
+          <div className="ml-2 flex items-center gap-1 pl-2 border-l border-stone-200 dark:border-stone-800">
+            <LocaleSwitcher />
             <ThemeToggle />
           </div>
         </div>

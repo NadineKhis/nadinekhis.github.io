@@ -6,14 +6,15 @@ interface BlogCardProps {
   description: string;
   date: string;
   tags: string[];
+  locale: string;
 }
 
-export default function BlogCard({ slug, title, description, date, tags }: BlogCardProps) {
+export default function BlogCard({ slug, title, description, date, tags, locale }: BlogCardProps) {
   return (
     <article>
-      <Link href={`/blog/${slug}`} className="group block">
+      <Link href={`/${locale}/blog/${slug}`} className="group block">
         <div className="text-xs font-medium text-amber-600 dark:text-amber-400">
-          {new Date(date).toLocaleDateString("en-US", {
+          {new Date(date).toLocaleDateString(locale === "ru" ? "ru-RU" : "en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",

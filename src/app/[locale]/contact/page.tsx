@@ -1,23 +1,27 @@
-import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/routing";
 
-export const metadata: Metadata = {
-  title: "Contact",
-};
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "Contact" });
 
-export default function Contact() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-20">
       <h1 className="text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
-        Get in Touch
+        {t("title")}
       </h1>
       <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
-        I&apos;m always open to interesting conversations, collaboration opportunities, or
-        just chatting about distributed systems and software engineering.
+        {t("subtitle")}
       </p>
 
       <div className="mt-12 space-y-6">
         <a
-          href="mailto:nadia.khis@proton.me"
+          href="mailto:nadia@example.com"
           className="group flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-5 transition-all hover:border-amber-500/50 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 dark:hover:border-amber-500/50"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
@@ -28,16 +32,16 @@ export default function Contact() {
           </div>
           <div>
             <div className="font-medium text-stone-900 group-hover:text-amber-600 dark:text-stone-50 dark:group-hover:text-amber-400">
-              Email
+              {t("email")}
             </div>
             <div className="text-sm text-stone-500 dark:text-stone-400">
-              nadia.khis@proton.me
+              nadia@example.com
             </div>
           </div>
         </a>
 
         <a
-          href="https://github.com/NadineKhis"
+          href="https://github.com/nadiahki"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-5 transition-all hover:border-amber-500/50 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 dark:hover:border-amber-500/50"
@@ -49,16 +53,16 @@ export default function Contact() {
           </div>
           <div>
             <div className="font-medium text-stone-900 group-hover:text-amber-600 dark:text-stone-50 dark:group-hover:text-amber-400">
-              GitHub
+              {t("github")}
             </div>
             <div className="text-sm text-stone-500 dark:text-stone-400">
-              @NadineKhis
+              @nadiahki
             </div>
           </div>
         </a>
 
         <a
-          href="https://linkedin.com/in/nadia-khismatullina-2b37b31b1"
+          href="https://linkedin.com/in/nadiahki"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-5 transition-all hover:border-amber-500/50 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 dark:hover:border-amber-500/50"
@@ -70,10 +74,10 @@ export default function Contact() {
           </div>
           <div>
             <div className="font-medium text-stone-900 group-hover:text-amber-600 dark:text-stone-50 dark:group-hover:text-amber-400">
-              LinkedIn
+              {t("linkedin")}
             </div>
             <div className="text-sm text-stone-500 dark:text-stone-400">
-              /in/nadia-khismatullina-2b37b31b1
+              /in/nadiahki
             </div>
           </div>
         </a>

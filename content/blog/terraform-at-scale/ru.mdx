@@ -1,0 +1,66 @@
+Managing Terraform across 20+ teams and 500+ modules taught me patterns that work and patterns that hurt. Here's what we learned.
+
+## Module Design
+
+### The Single Responsibility Principle Applies
+
+Each module should do one thing well. We had a "networking" module that grew to 2,000+ lines — it was impossible to reason about. We split it into:
+
+- `vpc` — VPC, subnets, route tables
+- `security-groups` — security groups and rules
+- `load-balancers` — ALB, NLB configurations
+- `dns` — Route53 zones and records
+
+### Version Everything
+
+```hcl
+module "vpc" {
+  source  = "github.com/org/terraform-modules//vpc?ref=v1.2.0"
+  # ...
+}
+```
+
+Semantic versioning on modules is non-negotiable. `ref=v1.2.0` means you know exactly what you're getting.
+
+## State Management
+
+### Remote State with Locking
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "org-terraform-state"
+    key            = "envs/production/network.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+```
+
+### State Per Environment
+
+One state file per environment (dev/staging/prod). Don't share state files across environments — a bad apply in dev shouldn't lock prod.
+
+## CI/CD Pipeline
+
+### Plan in PRs, Apply on Merge
+
+Every PR runs `terraform plan` and posts the output as a comment. Merging to main runs `terraform apply`. This gives you review without manual `terraform apply` commands.
+
+### Sentinel Policies
+
+We used HashiCorp Sentinel (now OPA) for policy-as-code:
+
+- No public S3 buckets
+- All encryption at rest enabled
+- Tags must include `owner` and `cost-center`
+
+## Common Pitfalls
+
+- **Don't use `count` for conditional resources** — use `for_each` with a conditional map instead
+- **Avoid `terraform import`** — use it as a last resort and always run `plan` after
+- **Pin provider versions** — unexpected provider upgrades break things
+- **Test locally** with `terratest` before pushing infrastructure changes
+
+Terraform at scale requires discipline. The tool is the easy part; the hard part is the processes around it.

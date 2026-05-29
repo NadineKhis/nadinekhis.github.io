@@ -1,0 +1,118 @@
+{
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "Home": {
+    "greeting": "Nadia Khismatullina",
+    "tagline": "Software engineer. I architect systems, write about distributed computing, and care deeply about performance.",
+    "viewProjects": "View Projects",
+    "readBlog": "Read Blog",
+    "featuredProjects": "Featured Projects",
+    "allProjects": "All projects",
+    "latestPosts": "Latest Posts",
+    "allPosts": "All posts"
+  },
+  "About": {
+    "title": "About",
+    "p1": "I'm a backend engineer who builds real-time communication systems and developer tools. I specialize in high-throughput messaging, WebRTC video infrastructure, and integrations that bridge different communication protocols.",
+    "p2": "I work at the intersection of Node.js, Meteor, MongoDB, and WebRTC — building features that serve government and enterprise clients at scale. I also maintain upstream open source forks, contribute back patches, and use AI/LLM tools to automate code review, generate tests, and build transcription pipelines.",
+    "experience": "Experience",
+    "skills": "Skills",
+    "myoffice": {
+      "title": "Middle+ Software Engineer — Backend Developer",
+      "company": "MyOffice (New Cloud Technologies LLC)",
+      "period": "2021 – 2025",
+      "stack": "Stack: Node.js, Meteor, MongoDB, WebRTC, Matrix, Docker",
+      "desc": "Developed Squadus — a Rocket.Chat-derived corporate messenger and digital workspace for the Russian market, serving government and enterprise clients.",
+      "bullets": [
+        "Built real-time messaging backend (1:1/group chats, channels, threads) on Node.js/Meteor; optimized MongoDB aggregation pipelines and replica set sharding for high-throughput message history at scale.",
+        "Developed WebRTC-based video conferencing (VKS) backend — signaling server, SFU/media relay integration, and AI transcription/summarization pipeline for meeting recordings.",
+        "Architected Telegram integration via the Matrix protocol — first Russian corporate messenger with bidirectional Telegram bridging, enabling secure cross-platform communication while preserving DLP and encryption controls.",
+        "Designed ICAP-based DLP integration layer for InfoWatch Traffic Monitor and SearchInform CIB, enabling real-time message/file content inspection and policy enforcement.",
+        "Built scalable file/media service with chunked upload, thumbnail generation, PDF preview, and progressive image loading optimized for low-bandwidth mobile environments.",
+        "Improved application performance: reduced mobile cold start by 24% (Android) / 9% (iOS), halved Squadus 1.9 launch time, and stabilized WebRTC under mass concurrent load via connection pooling and MongoDB index optimization.",
+        "Maintained Rocket.Chat upstream fork — rebased 384+ upstream changes in v1.1, ported security patches, and contributed back Matrix federation components.",
+        "Managed infrastructure: Docker Compose / Kubernetes deployment, CI/CD pipelines, MongoDB replica set failover, Prometheus/Grafana monitoring."
+      ]
+    },
+    "epam": {
+      "title": "Junior Backend Developer",
+      "company": "EPAM Systems",
+      "period": "2021 – 2022",
+      "stack": "Stack: Node.js, AWS Lambda, DynamoDB, API Gateway",
+      "bullets": [
+        "Developed Node.js microservices on AWS Lambda for an e-commerce platform serving the American Seeds Store (Syngenta).",
+        "Implemented authentication/authorization flows using JWT-based token validation across services.",
+        "Built error-handling middleware with structured logging, retry logic, and DynamoDB transaction error recovery.",
+        "Integrated DynamoDB for product catalog, order, and user data — designed single-table schema and optimized query patterns.",
+        "Contributed to CI/CD pipeline (AWS SAM / Serverless Framework) for automated deployments."
+      ]
+    },
+    "skillGroups": {
+      "languages": "Languages",
+      "backend": "Backend",
+      "data": "Data & Storage",
+      "infra": "Infrastructure",
+      "ai": "AI & LLM"
+    }
+  },
+  "Projects": {
+    "title": "Projects",
+    "subtitle": "Case studies with real metrics. Each project includes the problem, the approach, and the measurable results.",
+    "backLink": "All projects",
+    "items": {
+      "distributed-cache": {
+        "title": "Distributed Cache at Scale",
+        "description": "Designed and built a low-latency distributed caching layer serving 10M+ requests/day. Reduced p99 latency by 60% and cut infrastructure costs by 35%."
+      },
+      "real-time-analytics": {
+        "title": "Real-Time Analytics Pipeline",
+        "description": "Architected a streaming analytics pipeline processing 5TB of event data daily. Enabled sub-second query responses on 90-day rolling windows."
+      },
+      "api-gateway": {
+        "title": "API Gateway Optimization",
+        "description": "Rewrote critical path of the API gateway in Go. Achieved 3x throughput increase and reduced memory footprint by 70%."
+      }
+    }
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Technical writing about distributed systems, performance engineering, and infrastructure.",
+    "backLink": "All posts",
+    "posts": {
+      "building-resilient-systems": {
+        "title": "Building Resilient Distributed Systems",
+        "description": "Lessons learned from operating production systems at scale — circuit breakers, bulkheads, and graceful degradation patterns."
+      },
+      "profiling-nodejs": {
+        "title": "Profiling Node.js in Production",
+        "description": "A practical guide to CPU and memory profiling without downtime. Using async hooks, heap snapshots, and flamegraphs effectively."
+      },
+      "terraform-at-scale": {
+        "title": "Terraform at Scale: Lessons from 500+ Modules",
+        "description": "How we organized infrastructure as code across 20+ teams. Module design, state management, and CI/CD patterns that worked."
+      }
+    }
+  },
+  "Contact": {
+    "title": "Get in Touch",
+    "subtitle": "I'm always open to interesting conversations, collaboration opportunities, or just chatting about distributed systems and software engineering.",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Footer": {
+    "copyright": "\u00a9 {year} Nadia Khismatullina",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "LocaleSwitcher": {
+    "en": "EN",
+    "ru": "RU"
+  }
+}

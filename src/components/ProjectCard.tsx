@@ -5,12 +5,13 @@ interface ProjectCardProps {
   title: string;
   description: string;
   tags: string[];
+  locale: string;
 }
 
-export default function ProjectCard({ slug, title, description, tags }: ProjectCardProps) {
+export default function ProjectCard({ slug, title, description, tags, locale }: ProjectCardProps) {
   return (
     <Link
-      href={`/projects/${slug}`}
+      href={`/${locale}/projects/${slug}`}
       className="group block rounded-xl border border-stone-200 bg-white p-6 transition-all hover:border-amber-500/50 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 dark:hover:border-amber-500/50"
     >
       <h3 className="text-lg font-semibold text-stone-900 group-hover:text-amber-600 dark:text-stone-50 dark:group-hover:text-amber-400">
