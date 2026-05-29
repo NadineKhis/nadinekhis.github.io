@@ -7,7 +7,7 @@
     "contact": "Контакты"
   },
   "Home": {
-    "greeting": "Надя Хисматуллина",
+    "greeting": "Надия Хисматуллина",
     "tagline": "Инженер-программист. Проектирую системы, пишу о распределённых вычислениях и производительности.",
     "viewProjects": "Проекты",
     "readBlog": "Блог",
@@ -106,7 +106,7 @@
     "linkedin": "LinkedIn"
   },
   "Footer": {
-    "copyright": "\u00a9 {year} Надя Хисматуллина",
+    "copyright": "\u00a9 {year} Надия Хисматуллина",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "Почта"
