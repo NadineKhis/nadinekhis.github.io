@@ -64,39 +64,13 @@
     "title": "Projects",
     "subtitle": "Case studies with real metrics. Each project includes the problem, the approach, and the measurable results.",
     "backLink": "All projects",
-    "items": {
-      "distributed-cache": {
-        "title": "Distributed Cache at Scale",
-        "description": "Designed and built a low-latency distributed caching layer serving 10M+ requests/day. Reduced p99 latency by 60% and cut infrastructure costs by 35%."
-      },
-      "real-time-analytics": {
-        "title": "Real-Time Analytics Pipeline",
-        "description": "Architected a streaming analytics pipeline processing 5TB of event data daily. Enabled sub-second query responses on 90-day rolling windows."
-      },
-      "api-gateway": {
-        "title": "API Gateway Optimization",
-        "description": "Rewrote critical path of the API gateway in Go. Achieved 3x throughput increase and reduced memory footprint by 70%."
-      }
-    }
+    "items": {}
   },
   "Blog": {
     "title": "Blog",
     "subtitle": "Technical writing about distributed systems, performance engineering, and infrastructure.",
     "backLink": "All posts",
-    "posts": {
-      "building-resilient-systems": {
-        "title": "Building Resilient Distributed Systems",
-        "description": "Lessons learned from operating production systems at scale — circuit breakers, bulkheads, and graceful degradation patterns."
-      },
-      "profiling-nodejs": {
-        "title": "Profiling Node.js in Production",
-        "description": "A practical guide to CPU and memory profiling without downtime. Using async hooks, heap snapshots, and flamegraphs effectively."
-      },
-      "terraform-at-scale": {
-        "title": "Terraform at Scale: Lessons from 500+ Modules",
-        "description": "How we organized infrastructure as code across 20+ teams. Module design, state management, and CI/CD patterns that worked."
-      }
-    }
+    "posts": {}
   },
   "Contact": {
     "title": "Get in Touch",

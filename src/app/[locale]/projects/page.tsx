@@ -1,12 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/routing";
-import ProjectCard from "@/components/ProjectCard";
-
-const projects = [
-  { slug: "distributed-cache", tags: ["Go", "Redis", "Kubernetes", "gRPC"] },
-  { slug: "real-time-analytics", tags: ["Kafka", "Flink", "ClickHouse", "TypeScript"] },
-  { slug: "api-gateway", tags: ["Go", "Envoy", "Performance", "gRPC"] },
-];
 
 export default async function ProjectsPage({
   params,
@@ -26,17 +18,8 @@ export default async function ProjectsPage({
         {t("subtitle")}
       </p>
 
-      <div className="mt-12 grid gap-6">
-        {projects.map((p) => (
-          <ProjectCard
-            key={p.slug}
-            slug={p.slug}
-            title={t(`items.${p.slug}.title`)}
-            description={t(`items.${p.slug}.description`)}
-            tags={p.tags}
-            locale={locale}
-          />
-        ))}
+      <div className="mt-12 text-stone-500 dark:text-stone-400">
+        Coming soon.
       </div>
     </div>
   );
