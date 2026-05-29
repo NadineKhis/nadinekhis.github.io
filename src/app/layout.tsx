@@ -41,7 +41,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="flex min-h-full flex-col font-sans">{children}</body>
+      <body className="flex min-h-full flex-col font-sans bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-50">{children}</body>
     </html>
   );
 }

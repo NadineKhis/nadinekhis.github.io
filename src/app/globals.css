@@ -8,11 +8,6 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
-body {
-  background: var(--color-bg);
-  color: var(--color-fg);
-}
-
 ::selection {
   background-color: #f59e0b40;
 }
