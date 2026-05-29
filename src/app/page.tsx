@@ -5,7 +5,12 @@ import { useEffect } from "react";
 export default function RootRedirect() {
   useEffect(() => {
     const stored = localStorage.getItem("locale");
-    const locale = stored || "en";
+    let locale = stored;
+    if (!locale) {
+      const navLang = navigator.language?.startsWith("ru") ? "ru" : "en";
+      locale = navLang;
+      localStorage.setItem("locale", locale);
+    }
     window.location.replace(`/${locale}`);
   }, []);
 
